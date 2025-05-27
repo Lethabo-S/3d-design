@@ -1,0 +1,82 @@
+/* Move inline styles to CSS module for Customizer (Safari support, correct order) */
+.colorCircle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 2px solid #e5e7eb;
+  transition: transform 0.15s;
+  box-shadow: 0 2px 8px #0001;
+  cursor: pointer;
+}
+.colorCircleSelected {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px #a5b4fc;
+}
+.colorCircle:hover {
+  transform: scale(1.1);
+}
+.colorPickerPopover {
+  min-width: 220px;
+  position: absolute;
+  z-index: 20;
+  margin-top: 0.5rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 #0002;
+  border: 1px solid #e5e7eb;
+  animation: fade-in 0.2s;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.logoArea {
+  min-height: 48px;
+  position: relative;
+}
+.logoDraggable {
+  position: absolute;
+  cursor: move;
+  -webkit-user-select: none;
+  user-select: none;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px #0002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.textDraggable {
+  position: absolute;
+  cursor: move;
+  -webkit-user-select: none;
+  user-select: none;
+  font-weight: bold;
+  pointer-events: auto;
+}
+
+/* Add utility classes for dynamic styles (background color, position, text) */
+.colorCircleDynamic {
+  /* background-color set via inline style, but fallback for accessibility */
+  background-color: var(--circle-bg, #fff);
+}
+.logoDraggableDynamic {
+  /* Position and size set via inline style, fallback for accessibility */
+  left: var(--logo-left, 50%);
+  top: var(--logo-top, 30%);
+  width: var(--logo-width, 6vw);
+  height: var(--logo-height, 6vw);
+}
+.textDraggableDynamic {
+  /* Position, color, font, etc. set via inline style, fallback for accessibility */
+  left: var(--text-left, 50%);
+  top: var(--text-top, 80%);
+  color: var(--text-color, #222);
+  font-family: var(--text-font, Roboto);
+  font-size: var(--text-size, 24px);
+  transform: var(--text-transform, none);
+  -webkit-text-stroke: var(--text-stroke, 2px #fff);
+  text-shadow: var(--text-shadow, 2px 2px 4px #000);
+}
